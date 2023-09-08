@@ -3,13 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
+        <title>Form Reponse</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
@@ -25,7 +21,7 @@
             }
 
             .flex-center {
-                align-items: baseline;
+                align-items: center;
                 display: flex;
                 justify-content: center;
             }
@@ -67,50 +63,27 @@
             .pull-left{
                 float:left
             }
+            .button {
+                border: 1px solid #e7e7e7;
+                padding: 8px;
+                background: #e7e7e7;
+                font-size: 15px;
+                text-decoration: none;
+                color: #0009;
+                font-weight: 700;
+            }
         </style>
     </head>
     <body>
-        @php
-        $questions = [];
-        // Questions listing
-        $questions[] = array('question' => 'Question # 1',
-            'answer' => array(
-                'type' => 'radio',
-                'list' => array('Answer 1-1','Answer 1-2','Answer 1-3')
-            )
-        );
-        $questions[] = array('question' => 'Question # 2',
-            'answer' => array(
-                'type' => 'radio',
-                'list' => array('Answer 2-1','Answer 2-2','Answer 2-3')
-            )
-        );
-        @endphp
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Task
+                    Wellcom To Question Task
                 </div>
-                <div class="m-b-md">
-                    {!! Form::open() !!}
-                        @forelse ($questions as $qk=>$question)
-                            <p>
-                                {{ $question['question'] }}
-                                <input type="hidden" name="question[]" value="{{ $question['question'] }}">
-                            </p>
-
-                            @if($question['answer']['type'] === 'radio')
-                                @foreach($question['answer']['list'] as $k=>$ans)
-                                    <span style="margin:0px; padding:0px;">
-                                        <input type="radio" required name="question-{{ $qk }}" id="ans-{{ $qk }}-{{ $k }}" value="{{ $ans }}" />
-                                        <label for="ans-{{ $qk }}-{{ $k }}">{{ $ans }}</label>
-                                    </span>
-                                @endforeach
-                            @endif
-                            <hr>
-                        @endforeach
-                        <button class="pull-right" type="submit" >Submit</button>
-                    {!! Form::close() !!}
+                <div class="links">
+                    <a href="/">Home</a>
+                    <a href="/question/list">Questions</a>
+                    <a href="/performance/list">Performance</a>
                 </div>
             </div>
         </div>
